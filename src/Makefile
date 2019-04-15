@@ -1,4 +1,4 @@
-DIRS = lib 01_UNIX_Introduction
+DIRS = lib 01_UNIX_Introduction 02_UNIX_Standard
 
 all:
 	for i in $(DIRS); do \
