@@ -17,6 +17,12 @@
 
 #define MAXLINE 4096    // 最大行尺寸
 
+// 新文件使用的默认文件权限(644)
+#define FILE_MODE (S_IRUSR | S_IWUSR | S_IRGRP | S_IROTH)
+
+// 新目录使用的默认目录权限(755)
+#define DIR_MODE (FILE_MODE | S_IXUSR | S_IXGRP | S_IXOTH)
+
 void err_msg(const char *, ...);
 void err_dump(const char *, ...) __attribute__((noreturn));
 void err_quit(const char *, ...) __attribute__((noreturn));
