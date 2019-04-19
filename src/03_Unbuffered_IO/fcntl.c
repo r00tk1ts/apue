@@ -55,8 +55,9 @@ int main()
     if(fd != -1)
     {
         printf("Duplicated fd %d from stdin\n", fd);
-        fcntl_setfd(fd, fcntl_getfd(fd));
+        fcntl_setfd(fd, ~fcntl_getfd(fd));
     }
     
+    getchar();
     return 0;
 }
