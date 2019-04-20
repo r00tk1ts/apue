@@ -1,4 +1,4 @@
-DIRS = lib 01_UNIX_Introduction 02_UNIX_Standard 03_Unbuffered_IO
+DIRS = lib 01_UNIX_Introduction 02_UNIX_Standard 03_Unbuffered_IO 05_Standard_IO
 
 all:
 	for i in $(DIRS); do \
