@@ -15,7 +15,7 @@ int main()
 
 	if (stat("foo", &statbuf) < 0)
 		err_sys("stat error for foo");
-	if (chown("foo", 1, 1) < 0)
+	if (chown("foo", 1000, 1000) < 0)
 		err_sys("chown error for foo");
 
 	return 0;
