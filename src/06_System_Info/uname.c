@@ -20,7 +20,7 @@ int main(void)
 		printf("%s\t%s\t%s\t%s\t%s\n", myuname.sysname, myuname.nodename, myuname.version, myuname.release, myuname.machine);
 
 	char buf[64];
-	if((gethostname(&buf,strlen(buf))<0)
+	if(gethostname(buf,sizeof(buf)) < 0)
 		err_sys("gethostname error");
 	printf("hostname:%s\n", buf);
 
