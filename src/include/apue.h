@@ -16,7 +16,8 @@
 #include <unistd.h>     // for convenience
 #include <time.h>       // for convenience
 #include <sys/stat.h>   // for STAT related
-#include <sys/types.h>	// some systems still require this 
+#include <sys/types.h>	// some systems still require this
+#include <signal.h>		/* for SIG_ERR */
 
 #define MAXLINE 4096    // 最大行尺寸
 
@@ -42,4 +43,9 @@ void err_exit(int, const char *, ...) __attribute__((noreturn));
 void err_ret(const char *, ...);
 void err_sys(const char *, ...) __attribute__((noreturn));
 
+void	TELL_WAIT(void);		/* parent/child from {Sec race_conditions} */
+void	TELL_PARENT(pid_t);
+void	TELL_CHILD(pid_t);
+void	WAIT_PARENT(void);
+void	WAIT_CHILD(void);
 #endif /* _APUE_H */
