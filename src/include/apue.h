@@ -35,6 +35,10 @@
  */
 char	*path_alloc(size_t *);				/* {Prog pathalloc} */
 
+void	 pr_exit(int);						/* {Prog prexit} */
+
+void	 pr_mask(const char *);				/* {Prog prmask} */
+
 void err_msg(const char *, ...);
 void err_dump(const char *, ...) __attribute__((noreturn));
 void err_quit(const char *, ...) __attribute__((noreturn));
