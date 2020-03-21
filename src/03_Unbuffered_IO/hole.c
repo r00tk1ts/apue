@@ -22,7 +22,7 @@ int main(void)
     
     if(write(fd, buf1, 10) != 10)
         err_sys("buf1 write error");
-    /* offset now = 10 */
+    /* offset now = 10_Process_Rel */
 
     if(lseek(fd, 16384, SEEK_SET) == -1)
         err_sys("lseek error");
