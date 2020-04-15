@@ -1,3 +1,11 @@
+/**
+ * @file pthread create/join模型
+ *
+ * apue示例程序 - badexit2.c
+ *
+ * @author Steve & r00tk1t
+ *
+ */
 #include "apue.h"
 #include <pthread.h>
 
@@ -5,8 +13,7 @@ struct foo {
 	int a, b, c, d;
 };
 
-void
-printfoo(const char *s, const struct foo *fp)
+void printfoo(const char *s, const struct foo *fp)
 {
 	printf("%s", s);
 	printf("  structure at 0x%lx\n", (unsigned long)fp);
@@ -16,8 +23,7 @@ printfoo(const char *s, const struct foo *fp)
 	printf("  foo.d = %d\n", fp->d);
 }
 
-void *
-thr_fn1(void *arg)
+void *thr_fn1(void *arg)
 {
 	struct foo	foo = {1, 2, 3, 4};
 
@@ -25,15 +31,13 @@ thr_fn1(void *arg)
 	pthread_exit((void *)&foo);
 }
 
-void *
-thr_fn2(void *arg)
+void *thr_fn2(void *arg)
 {
 	printf("thread 2: ID is %lu\n", (unsigned long)pthread_self());
 	pthread_exit((void *)0);
 }
 
-int
-main(void)
+int main(void)
 {
 	int			err;
 	pthread_t	tid1, tid2;

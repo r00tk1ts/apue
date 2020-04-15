@@ -1,3 +1,11 @@
+/**
+ * @file mutex2简化之粗粒度锁
+ *
+ * apue示例程序 - mutex3.c
+ *
+ * @author Steve & r00tk1t
+ *
+ */
 #include <stdlib.h>
 #include <pthread.h>
 
@@ -15,8 +23,7 @@ struct foo {
 	/* ... more stuff here ... */
 };
 
-struct foo *
-foo_alloc(int id) /* allocate the object */
+struct foo *foo_alloc(int id) /* allocate the object */
 {
 	struct foo	*fp;
 	int			idx;
@@ -40,16 +47,14 @@ foo_alloc(int id) /* allocate the object */
 	return(fp);
 }
 
-void
-foo_hold(struct foo *fp) /* add a reference to the object */
+void foo_hold(struct foo *fp) /* add a reference to the object */
 {
 	pthread_mutex_lock(&hashlock);
 	fp->f_count++;
 	pthread_mutex_unlock(&hashlock);
 }
 
-struct foo *
-foo_find(int id) /* find an existing object */
+struct foo *foo_find(int id) /* find an existing object */
 {
 	struct foo	*fp;
 
@@ -64,8 +69,7 @@ foo_find(int id) /* find an existing object */
 	return(fp);
 }
 
-void
-foo_rele(struct foo *fp) /* release a reference to the object */
+void foo_rele(struct foo *fp) /* release a reference to the object */
 {
 	struct foo	*tfp;
 	int			idx;

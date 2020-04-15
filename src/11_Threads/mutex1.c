@@ -1,3 +1,11 @@
+/**
+ * @file 互斥量应用于引用计数
+ *
+ * apue示例程序 - mutex1.c
+ *
+ * @author Steve & r00tk1t
+ *
+ */
 #include <stdlib.h>
 #include <pthread.h>
 
@@ -8,8 +16,7 @@ struct foo {
 	/* ... more stuff here ... */
 };
 
-struct foo *
-foo_alloc(int id) /* allocate the object */
+struct foo *foo_alloc(int id) /* allocate the object */
 {
 	struct foo *fp;
 
@@ -25,16 +32,14 @@ foo_alloc(int id) /* allocate the object */
 	return(fp);
 }
 
-void
-foo_hold(struct foo *fp) /* add a reference to the object */
+void foo_hold(struct foo *fp) /* add a reference to the object */
 {
 	pthread_mutex_lock(&fp->f_lock);
 	fp->f_count++;
 	pthread_mutex_unlock(&fp->f_lock);
 }
 
-void
-foo_rele(struct foo *fp) /* release a reference to the object */
+void foo_rele(struct foo *fp) /* release a reference to the object */
 {
 	pthread_mutex_lock(&fp->f_lock);
 	if (--fp->f_count == 0) { /* last reference */

@@ -1,3 +1,11 @@
+/**
+ * @file A/B型互斥锁应用于引用计数
+ *
+ * apue示例程序 - mutex2.c
+ *
+ * @author Steve & r00tk1t
+ *
+ */
 #include <stdlib.h>
 #include <pthread.h>
 
@@ -16,8 +24,7 @@ struct foo {
 	/* ... more stuff here ... */
 };
 
-struct foo *
-foo_alloc(int id) /* allocate the object */
+struct foo *foo_alloc(int id) /* allocate the object */
 {
 	struct foo	*fp;
 	int			idx;
@@ -41,16 +48,14 @@ foo_alloc(int id) /* allocate the object */
 	return(fp);
 }
 
-void
-foo_hold(struct foo *fp) /* add a reference to the object */
+void foo_hold(struct foo *fp) /* add a reference to the object */
 {
 	pthread_mutex_lock(&fp->f_lock);
 	fp->f_count++;
 	pthread_mutex_unlock(&fp->f_lock);
 }
 
-struct foo *
-foo_find(int id) /* find an existing object */
+struct foo *foo_find(int id) /* find an existing object */
 {
 	struct foo	*fp;
 
@@ -65,8 +70,7 @@ foo_find(int id) /* find an existing object */
 	return(fp);
 }
 
-void
-foo_rele(struct foo *fp) /* release a reference to the object */
+void foo_rele(struct foo *fp) /* release a reference to the object */
 {
 	struct foo	*tfp;
 	int			idx;

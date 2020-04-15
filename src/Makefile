@@ -1,5 +1,5 @@
 DIRS = lib 01_UNIX_Introduction 02_UNIX_Standard 03_Unbuffered_IO 04_FILE_DIR 05_Standard_IO \
-		06_System_Info 07_Process_Env 08_Process_Ctl 09_Process_Rel 10_Signals 11_Threads 14_Daemons
+		06_System_Info 07_Process_Env 08_Process_Ctl 09_Process_Rel 10_Signals 11_Threads 12_ThreadCtl 14_Daemons
 
 all:
 	for i in $(DIRS); do \

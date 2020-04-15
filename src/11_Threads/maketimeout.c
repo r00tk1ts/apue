@@ -1,8 +1,15 @@
+/**
+ * @file timeval到timespec的手动转换
+ *
+ * apue示例程序 - maketimeout.c
+ *
+ * @author Steve & r00tk1t
+ *
+ */
 #include <sys/time.h>
 #include <stdlib.h>
 
-void
-maketimeout(struct timespec *tsp, long minutes)
+void maketimeout(struct timespec *tsp, long minutes)
 {
 	struct timeval now;
 

@@ -1,8 +1,15 @@
+/**
+ * @file timedlock的一种应用
+ *
+ * apue示例程序 - timedlock.c
+ *
+ * @author Steve & r00tk1t
+ *
+ */
 #include "apue.h"
 #include <pthread.h>
 
-int
-main(void)
+int main(void)
 {
 	int err;
 	struct timespec tout;

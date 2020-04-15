@@ -1,10 +1,17 @@
+/**
+ * @file 打印线程ID
+ *
+ * apue示例程序 - threadid.c
+ *
+ * @author Steve & r00tk1t
+ *
+ */
 #include "apue.h"
 #include <pthread.h>
 
 pthread_t ntid;
 
-void
-printids(const char *s)
+void printids(const char *s)
 {
 	pid_t		pid;
 	pthread_t	tid;
@@ -15,15 +22,13 @@ printids(const char *s)
 	  (unsigned long)tid, (unsigned long)tid);
 }
 
-void *
-thr_fn(void *arg)
+void *thr_fn(void *arg)
 {
 	printids("new thread: ");
 	return((void *)0);
 }
 
-int
-main(void)
+int main(void)
 {
 	int		err;
 
