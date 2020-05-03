@@ -1,0 +1,21 @@
+/**
+ * @file 写锁整个文件demo
+ *
+ * apue示例程序 - lockfile.c
+ *
+ * @author Steve & r00tk1t
+ *
+ */
+#include <unistd.h>
+#include <fcntl.h>
+
+int lockfile(int fd)
+{
+	struct flock fl;
+
+	fl.l_type = F_WRLCK;
+	fl.l_start = 0;
+	fl.l_whence = SEEK_SET;
+	fl.l_len = 0;
+	return(fcntl(fd, F_SETLK, &fl));
+}
