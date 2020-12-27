@@ -50,6 +50,7 @@ int main(int argc, char *argv[])
 			err_sys("mmap error for output");
 
 		memcpy(dst, src, copysz);	/* does the file copy */
+
 		munmap(src, copysz);
 		munmap(dst, copysz);
 		fsz += copysz;

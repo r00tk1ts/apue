@@ -9,7 +9,7 @@ ifeq "$(PLATFORM)" "solaris"
   EXTRALIBS=-lrt
 endif
 
-PROGS =	add2 add2stdio devzero myuclc pipe1 pipe2 pipe4 popen1 popen2 tshm
+PROGS =	add2 add2stdio devzero myuclc pipe1 pipe2 pipe3 pipe4 popen1 popen2 tshm fifo read_fifo write_fifo
 
 all:	$(PROGS) popen.o slock.o tellwait.o
 

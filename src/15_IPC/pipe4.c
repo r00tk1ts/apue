@@ -1,7 +1,7 @@
 /**
  * @file 协同进程
  *
- * apue示例程序 - pipe2.c
+ * apue示例程序 - pipe4.c
  *
  * @author Steve & r00tk1t
  *

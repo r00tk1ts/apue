@@ -24,10 +24,10 @@ void process_msg()
 	struct msg *mp;
 
 	for (;;) {
-		pthread_mutex_lock(&qlock);
+        pthread_mutex_lock(&qlock);
 		while (workq == NULL)
-			pthread_cond_wait(&qready, &qlock);
-		mp = workq;
+			pthread_cond_wait(&qready, &qlock); // 1-> thread wait on qready ,2-> unlock qlock, 3->relock qlock before return
+        mp = workq;
 		workq = mp->m_next;
 		pthread_mutex_unlock(&qlock);
 		/* now process the message mp */

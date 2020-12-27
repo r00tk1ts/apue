@@ -1,7 +1,7 @@
 /**
  * @file PAGER交互-popen版
  *
- * apue示例程序 - pipe1.c
+ * apue示例程序 - popen2.c
  *
  * @author Steve & r00tk1t
  *

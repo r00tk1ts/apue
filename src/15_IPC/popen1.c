@@ -1,7 +1,7 @@
 /**
  * @file popen读取测试
  *
- * apue示例程序 - pipe1.c
+ * apue示例程序 - popen1.c
  *
  * @author Steve & r00tk1t
  *
