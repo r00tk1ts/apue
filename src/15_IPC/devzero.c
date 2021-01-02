@@ -1,3 +1,11 @@
+/**
+ * @file 对比mmap, mmap是文件与内存的关联
+ *
+ * apue示例程序 - devzero.c
+ *
+ * @author Steve & r00tk1t
+ *
+ */
 #include "apue.h"
 #include <fcntl.h>
 #include <sys/mman.h>
@@ -5,14 +13,12 @@
 #define	NLOOPS		1000
 #define	SIZE		sizeof(long)	/* size of shared memory area */
 
-static int
-update(long *ptr)
+static int update(long *ptr)
 {
 	return((*ptr)++);	/* return value before increment */
 }
 
-int
-main(void)
+int main()
 {
 	int		fd, i, counter;
 	pid_t	pid;
@@ -48,5 +54,5 @@ main(void)
 		}
 	}
 
-	exit(0);
+	return 0;
 }

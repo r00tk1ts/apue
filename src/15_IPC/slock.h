@@ -1,3 +1,11 @@
+/**
+ * @file POSIX信号量-互斥锁实现
+ *
+ * apue示例程序 - slock.h
+ *
+ * @author Steve & r00tk1t
+ *
+ */
 #include <semaphore.h>
 #include <fcntl.h>
 #include <limits.h>

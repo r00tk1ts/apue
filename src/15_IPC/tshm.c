@@ -1,3 +1,11 @@
+/**
+ * @file 创建共享存储demo
+ *
+ * apue示例程序 - tshm.c
+ *
+ * @author Steve & r00tk1t
+ *
+ */
 #include "apue.h"
 #include <sys/shm.h>
 
@@ -8,8 +16,7 @@
 
 char	array[ARRAY_SIZE];	/* uninitialized data = bss */
 
-int
-main(void)
+int main()
 {
 	int		shmid;
 	char	*ptr, *shmptr;
@@ -33,5 +40,5 @@ main(void)
 	if (shmctl(shmid, IPC_RMID, 0) < 0)
 		err_sys("shmctl error");
 
-	exit(0);
+	return 0;
 }

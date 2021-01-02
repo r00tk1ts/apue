@@ -1,11 +1,18 @@
+/**
+ * @file POSIX信号量-互斥锁实现
+ *
+ * apue示例程序 - slock.c
+ *
+ * @author Steve & r00tk1t
+ *
+ */
 #include "slock.h"
 #include <stdlib.h>
 #include <stdio.h>
 #include <unistd.h>
 #include <errno.h>
 
-struct slock *
-s_alloc()
+struct slock *s_alloc()
 {
 	struct slock *sp;
 	static int cnt;
@@ -13,8 +20,7 @@ s_alloc()
 	if ((sp = malloc(sizeof(struct slock))) == NULL)
 		return(NULL);
 	do {
-		snprintf(sp->name, sizeof(sp->name), "/%ld.%d", (long)getpid(),
-		  cnt++);
+		snprintf(sp->name, sizeof(sp->name), "/%ld.%d", (long)getpid(), cnt++);
 		sp->semp = sem_open(sp->name, O_CREAT|O_EXCL, S_IRWXU, 1);
 	} while ((sp->semp == SEM_FAILED) && (errno == EEXIST));
 	if (sp->semp == SEM_FAILED) {
@@ -25,27 +31,23 @@ s_alloc()
 	return(sp);
 }
 
-void
-s_free(struct slock *sp)
+void s_free(struct slock *sp)
 {
 	sem_close(sp->semp);
 	free(sp);
 }
 
-int
-s_lock(struct slock *sp)
+int s_lock(struct slock *sp)
 {
 	return(sem_wait(sp->semp));
 }
 
-int
-s_trylock(struct slock *sp)
+int s_trylock(struct slock *sp)
 {
 	return(sem_trywait(sp->semp));
 }
 
-int
-s_unlock(struct slock *sp)
+int s_unlock(struct slock *sp)
 {
 	return(sem_post(sp->semp));
 }

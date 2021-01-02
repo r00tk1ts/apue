@@ -20,7 +20,7 @@ int main()
     int id = msgget(MQ_KEY, 0);
     if(id == -1) err_sys("msgget");
     while(1) {
-        struct msgbuf mb,rcv;
+        msgbuf_t mb,rcv;
         memset(&mb, 0x00, sizeof(mb));
         while(fgets(mb.mtext+sizeof(long), 100- sizeof(long), stdin) != NULL) {
             *(long*)mb.mtext = getpid();

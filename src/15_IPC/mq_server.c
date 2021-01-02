@@ -17,11 +17,11 @@
 
 int main()
 {
-    int id = msgget(MQ_KEY, IPC_CREAT|0600); //创建消息队列
-    if(id == -1) err_sys("msgrcv");
+    int id = msgget(MQ_KEY, IPC_CREAT|0644); //创建消息队列
+    if(id == -1) err_sys("msgget");
 
     while(1) {
-        struct msgbuf mb;
+        msgbuf_t mb;
         memset(&mb, 0x00, sizeof(mb));
         if(msgrcv(id ,&mb, 100,1, 0) == -1)
             err_sys("msgrcv");

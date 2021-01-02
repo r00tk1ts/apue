@@ -7,9 +7,9 @@
 
 #define MQ_KEY 11111
 
-struct msgbuf{
+typedef struct msg_buf{
     long channel;
     char mtext[100];
-};
+}msgbuf_t;
 
 #endif //APUE_MQ_COMMON_H
